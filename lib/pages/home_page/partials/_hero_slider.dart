@@ -20,7 +20,7 @@ class _HeroSlider extends StatelessWidget {
         children: [
           Positioned(
             left: 66,
-            width: width,
+            width: width.clamp(0, 1280 - 66),
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(60),

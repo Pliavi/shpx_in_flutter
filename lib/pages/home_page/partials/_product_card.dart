@@ -3,13 +3,13 @@ part of '../home_page.dart';
 class _ProductCard extends StatelessWidget {
   const _ProductCard({
     Key? key,
-    this.padding = const EdgeInsets.all(16.0),
+    this.margin = const EdgeInsets.all(16.0),
     this.name = "Chaise Molle",
     this.price = "\$18,00",
     required this.imagePath,
   }) : super(key: key);
 
-  final EdgeInsets padding;
+  final EdgeInsets margin;
   final String name;
   final String price;
   final String imagePath;
@@ -19,18 +19,17 @@ class _ProductCard extends StatelessWidget {
     final nameTheme = SHPXFonts.productTitle;
     final priceTheme = SHPXFonts.productPrice;
 
-    return Padding(
-      padding: padding,
-      child: Container(
+    return LayoutBuilder(builder: (context, constraints) {
+      return Container(
+        margin: margin,
         padding: const EdgeInsets.symmetric(vertical: 38, horizontal: 36),
         width: 286,
         decoration: const BoxDecoration(
           color: SHPXColors.primary,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(50),
-          ),
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
@@ -42,17 +41,17 @@ class _ProductCard extends StatelessWidget {
             Text(price, style: priceTheme),
             const SizedBox(height: 8),
             SizedBox(
-              height: 150,
+              height: 0,
               child: Stack(
                 clipBehavior: Clip.none,
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.center,
                 children: [
-                  Positioned(
-                    top: 30,
+                  PositionedDirectional(
+                    bottom: -constraints.maxHeight + 90,
                     child: Image.asset(
                       imagePath,
-                      height: 215,
-                      fit: BoxFit.fitHeight,
+                      height: (constraints.maxHeight * 0.6).clamp(0, 250),
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
@@ -60,7 +59,7 @@ class _ProductCard extends StatelessWidget {
             )
           ],
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -44,15 +44,15 @@ class SHPXMenuDrawer extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {},
-                child: Text("About", style: SHPXFonts.menuItem),
+                child: Text("About", style: SHPXFonts.menuItemActive),
               ),
               TextButton(
                 onPressed: () {},
-                child: Text("Products", style: SHPXFonts.menuItem),
+                child: Text("Products", style: SHPXFonts.menuItemActive),
               ),
               TextButton(
                 onPressed: () {},
-                child: Text("Contact", style: SHPXFonts.menuItem),
+                child: Text("Contact", style: SHPXFonts.menuItemActive),
               )
             ],
           ),
